@@ -1,12 +1,12 @@
-import './App.css';
-import Movies from './pages/Movies';
+import Movie from "./components/Movie";
+import Movies from "./pages/Movies";
 
 function App() {
-  return (
-    <div className="container p-5">
-     <Movies/>
-    </div>
-  );
+    return (
+        <div className="container">
+            <Movies />
+        </div>
+    );
 }
 
 export default App;
