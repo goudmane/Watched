@@ -1,4 +1,3 @@
-import Movie from "./components/Movie";
 import Movies from "./pages/Movies";
 
 function App() {
