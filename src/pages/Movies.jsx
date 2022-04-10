@@ -1,24 +1,30 @@
-import React, { useState } from "react";
-import MoviesList from "../components/MoviesList";
+import React, { useEffect, useState } from "react";
+import Movie from "../components/Movie";
 import Search from "../components/Search";
-import { moviesData } from "../data/moviesData";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const allMovies = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`;
-const imageURL = `https://image.tmdb.org/t/p/w500/<IMAGE>.jpg`;
+const imageURL = `https://image.tmdb.org/t/p/w1280/<IMAGE>.jpg`;
 
 const Movies = () => {
-    console.log(API_KEY);
-    // Movie URL
-    // const URL = `http://www.omdbapi.com/?i=tt3896198&apikey=dd58f28f`
-    // TMDB API KEY: 7c8b7c239ae206c18b3751c383752595
-    // URL: https://api.themoviedb.org/3/movie/550?api_key=7c8b7c239ae206c18b3751c383752595
-    const [movies, setMovies] = useState(moviesData);
-    const [filteredMovies, setFilteredMovies] = useState(movies);
+    // All Movies State
+    const [movies, setMovies] = useState([]);
+
+    // Using Use Effect to fetch Data
+    useEffect(() => {
+        const getMovies = async () => {
+            const response = await fetch(allMovies);
+            const data = await response.json();
+            if (+response.status === 200) setMovies(data.results);
+            else console.log("Error Occurred");
+        };
+        getMovies();
+    }, []);
+
     return (
         <div>
-            <Search setMovies={setFilteredMovies} movies={movies} />
-            <MoviesList movies={filteredMovies} />
+            {movies &&
+                movies.map((movie) => <Movie key={movie.id} data={movie} />)}
         </div>
     );
 };
