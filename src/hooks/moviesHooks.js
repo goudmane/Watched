@@ -1,0 +1,2 @@
+const useMoviesAtHome = () => {};
+const useMoviesAtPage = () => {};
