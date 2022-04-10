@@ -5,7 +5,7 @@ const Movie = ({ data: movie }) => {
     const handleLike = () => {
         setLiked((prev) => !prev);
     };
-    return <div className="movie">{JSON.stringify(movie)}</div>;
+    return <div className="movie"></div>;
 };
 
 export default Movie;

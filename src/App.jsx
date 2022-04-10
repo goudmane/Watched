@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import Movies from "./pages/Movies";
-import TopRated from "./pages/TopRated";
-import TrendingMovies from "./pages/Trending";
-import UpcomingMovies from "./pages/Upcoming";
+import {
+    Home,
+    TrendingMovies,
+    TopRated,
+    UpcomingMovies,
+    MovieDetail,
+} from "./pages";
 
 function App() {
     return (
@@ -16,6 +18,7 @@ function App() {
                     <Route path="/top-rated" element={<TopRated />} />
                     <Route path="/trending" element={<TrendingMovies />} />
                     <Route path="/upcoming" element={<UpcomingMovies />} />
+                    <Route path="/movie/:movieId" element={<MovieDetail />} />
                 </Routes>
             </div>
         </>
