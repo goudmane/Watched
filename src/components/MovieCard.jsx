@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaRegBookmark } from "react-icons/fa";
 import { baseImgUrl } from "../API/moviesService";
 
 const movie = {
@@ -26,11 +27,16 @@ const MovieCard = ({ data }) => {
     };
     return (
         <div className="movie-card">
-            <div className="overlay"></div>
             <img
-                src={`${baseImgUrl}${movie.poster_path}`}
+                src={`${baseImgUrl}/w500/${movie.poster_path}`}
                 alt={movie.original_title}
             />
+            <div className="movie-detail">
+                <div className="movie-title">{movie.original_title}</div>
+                <div className="bookmark">
+                    <FaRegBookmark />
+                </div>
+            </div>
         </div>
     );
 };

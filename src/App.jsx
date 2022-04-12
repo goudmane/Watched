@@ -12,15 +12,14 @@ function App() {
     return (
         <>
             <Header />
-            <div className="container">
-                <Routes>
-                    <Route path="/" exact element={<Home />} />
-                    <Route path="/top-rated" element={<TopRated />} />
-                    <Route path="/trending" element={<TrendingMovies />} />
-                    <Route path="/upcoming" element={<UpcomingMovies />} />
-                    <Route path="/movie/:movieId" element={<MovieDetail />} />
-                </Routes>
-            </div>
+
+            <Routes>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/top-rated" element={<TopRated />} />
+                <Route path="/trending" element={<TrendingMovies />} />
+                <Route path="/upcoming" element={<UpcomingMovies />} />
+                <Route path="/movie/:movieId" element={<MovieDetail />} />
+            </Routes>
         </>
     );
 }
