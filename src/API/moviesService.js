@@ -24,4 +24,4 @@ export const getMoviesByEndPoint = async (endPoint, pageNum) => {
     return data;
 };
 
-export const baseImgUrl = `https://image.tmdb.org/t/p/w200`;
+export const baseImgUrl = `https://image.tmdb.org/t/p`;
