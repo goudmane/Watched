@@ -1,15 +1,18 @@
 import React from "react";
 import MovieCard from "../../components/MovieCard";
 import { useFetchByMoviesEndpoint } from "../../hooks/moviesHooks";
+import { endPoints } from "../../utils/endpoints";
 
 const Home = () => {
     const { movies: trendingMovies, loading } = useFetchByMoviesEndpoint(
-        "/trending/movie/week"
+        endPoints.trendingMoviesByWeek
     );
-    const { movies: upcomingMovies } =
-        useFetchByMoviesEndpoint("/movie/upcoming");
-    const { movies: topRatedMovies } =
-        useFetchByMoviesEndpoint("/movie/top_rated");
+    const { movies: upcomingMovies } = useFetchByMoviesEndpoint(
+        endPoints.upcomingMovies
+    );
+    const { movies: topRatedMovies } = useFetchByMoviesEndpoint(
+        endPoints.topRatedMovies
+    );
 
     console.log(loading);
     console.log("[TRENDING MOVIES]", trendingMovies);
