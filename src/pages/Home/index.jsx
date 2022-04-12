@@ -5,9 +5,9 @@ import { useFetchByMoviesEndpoint } from "../../hooks/moviesHooks";
 import { endPoints } from "../../utils/endpoints";
 
 const Home = () => {
-    // const { movies: trendingMovies, loading } = useFetchByMoviesEndpoint(
-    //     endPoints.trendingMoviesByWeek
-    // );
+    const { movies: trendingMovies, loading } = useFetchByMoviesEndpoint(
+        endPoints.trendingMoviesByWeek
+    );
     // const { movies: upcomingMovies } = useFetchByMoviesEndpoint(
     //     endPoints.upcomingMovies
     // );
@@ -25,11 +25,10 @@ const Home = () => {
             <Banner />
             <div className="container">
                 <div className="movie-grid">
-                    <MovieCard />
-                    <MovieCard />
-                    <MovieCard />
-                    <MovieCard />
-                    <MovieCard />
+                    {trendingMovies &&
+                        trendingMovies.map((movie) => (
+                            <MovieCard key={movie.id} movie={movie} />
+                        ))}
                 </div>
             </div>
         </>
