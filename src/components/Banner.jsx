@@ -2,7 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { baseImgUrl } from "../API/moviesService";
 
-const movie = {
+const bannerMovie = {
     adult: false,
     backdrop_path: "/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg",
     genre_ids: [80, 53, 18],
@@ -25,16 +25,22 @@ const Banner = () => {
         <div
             className="banner"
             style={{
-                backgroundImage: `url(${baseImgUrl}/original/${movie.backdrop_path})`,
+                backgroundImage: `url(${baseImgUrl}/original/${bannerMovie.backdrop_path})`,
             }}>
-            <div className="movie-container">
-                <div className="movie-rating">
-                    <FaStar className="rating-star" />{" "}
-                    <span>{movie.vote_average} / 10</span>
+            {bannerMovie && (
+                <div className="movie-container">
+                    <div className="movie-rating">
+                        <FaStar className="rating-star" />{" "}
+                        <span>{bannerMovie.vote_average} / 10</span>
+                    </div>
+                    <div className="movie-title">
+                        {bannerMovie.original_title}
+                    </div>
+                    <div className="movie-description">
+                        {bannerMovie.overview}
+                    </div>
                 </div>
-                <div className="movie-title">{movie.original_title}</div>
-                <div className="movie-description">{movie.overview}</div>
-            </div>
+            )}
             <div className="overlay"></div>
         </div>
     );

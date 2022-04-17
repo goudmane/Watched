@@ -6,10 +6,12 @@ import { baseImgUrl } from "../API/moviesService";
 const MovieCard = ({ movie }) => {
     return (
         <div className="movie-card">
-            <img
-                src={`${baseImgUrl}/w500/${movie.poster_path}`}
-                alt={movie.original_title}
-            />
+            <Link to={`movie/${movie.id}`}>
+                <img
+                    src={`${baseImgUrl}/w500/${movie.poster_path}`}
+                    alt={movie.original_title}
+                />
+            </Link>
             <div className="movie-detail">
                 <div className="movie-title">
                     <Link to={`movie/${movie.id}`}>{movie.original_title}</Link>
