@@ -347,9 +347,28 @@ header .nav-links li:last-child {
     font-size: 1rem;
 }
 .movie-trailer {
-    width: 500px;
-    flex: 0 0 500px;
-    height: max-content;
+    width: 420px;
+    flex: 0 0 450px;
+    height: 350px;
+}
+@media (max-width: 992px) {
+    .movie-display {
+        flex-direction: column;
+    }
+    .movie-trailer {
+        margin-top: 1rem;
+        flex: 0 0 350px;
+        height: 300px;
+    }
+}
+@media (max-width: 600px) {
+    .movie-poster {
+        width: auto;
+    }
+    .movie-trailer {
+        flex: auto;
+        width: auto;
+    }
 }
 /* Add Page */
 .add-content {
