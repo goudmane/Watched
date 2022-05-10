@@ -1,9 +1,10 @@
 import axios from "axios";
 import { createLinkFromData } from "../utils/helperFunctions";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+// const API_KEY = process.env.REACT_APP_API_KEY;
 const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
-const baseUrl = `https://api.themoviedb.org/3/`;
+const baseUrl = `https://api.themoviedb.org/3`;
+
 const API = axios.create({
     baseURL: baseUrl,
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
@@ -11,11 +12,10 @@ const API = axios.create({
 export const getAllMovies = async () => {
     const response = await API.get(`/discover/movie`);
     const data = await response.data;
-    console.log(data);
     return data;
 };
 
-export const getMoviesByEndPoint = async (endPoint, pageNum) => {
+export const getMoviesByEndPoint = async (endPoint, pageNum = 1) => {
     const response = await API.get(endPoint, {
         params: {
             page: pageNum,
@@ -28,7 +28,6 @@ export const getMoviesByEndPoint = async (endPoint, pageNum) => {
 export const getMovieById = async (movieId) => {
     const response = await API.get(`movie/${movieId}`);
     const data = await response.data;
-    console.log(data);
     return data;
 };
 
