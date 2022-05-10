@@ -5,7 +5,7 @@ export const createLinkFromData = (data) => {
         (video) =>
             video.type === "Trailer" && video.site === "YouTube" && video.key
     )[0].key;
-    const link = `https://www.youtube.com/watch?v=${key}`;
+    const link = `https://www.youtube.com/embed/${key}`;
 
     return link;
 };
@@ -23,7 +23,7 @@ export const getWritersFromCrew = (crew) => {
 export const rectifyImageLinks = (data, width) => {
     if (typeof data === "string") {
         return `${baseImgUrl}/${width}${data}`;
-    } else {
+    } else if (typeof data === Object) {
         return data.map((d) => `${baseImgUrl}/${width}${d}`);
     }
 };
