@@ -20,6 +20,21 @@ export const getWritersFromCrew = (crew) => {
     );
 };
 
+export const rectifyMovieData = (data) => {
+    if (Array.isArray(data)) {
+        return data.map((movie) => ({
+            ...movie,
+            poster_path: rectifyImageLinks(movie.poster_path, "w300"),
+            backdrop_path: rectifyImageLinks(movie.backdrop_path, "original"),
+        }));
+    }
+    return {
+        ...data,
+        poster_path: rectifyImageLinks(data.poster_path, "w300"),
+        backdrop_path: rectifyImageLinks(data.backdrop_path, "original"),
+    };
+};
+
 export const rectifyImageLinks = (data, width) => {
     if (typeof data === "string") {
         return `${baseImgUrl}/${width}${data}`;

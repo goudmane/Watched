@@ -11,67 +11,48 @@ import {
     getDirectorFromCrew,
     getWritersFromCrew,
     rectifyImageLinks,
+    rectifyMovieData,
 } from "../utils/helperFunctions";
 
 export const useFetchByMoviesAtHome = (pageNum = 1) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         (async () => {
-            const { results: trendingMovies } = await getMoviesByEndPoint(
-                endPoints.trendingMoviesByWeek,
-                pageNum
-            );
-            const { results: upcomingMovies } = await getMoviesByEndPoint(
-                endPoints.upcomingMovies,
-                pageNum
-            );
-            const { results: topRatedMovies } = await getMoviesByEndPoint(
-                endPoints.topRatedMovies,
-                pageNum
-            );
-            const bannerMovie =
-                trendingMovies[
-                    Math.floor(Math.random() * trendingMovies.length)
-                ];
-            setMovies(() => ({
-                bannerMovie: {
-                    ...bannerMovie,
-                    backdrop_path: rectifyImageLinks(
-                        bannerMovie.backdrop_path,
-                        "original"
-                    ),
-                },
-                trendingMovies: trendingMovies.map((movie) => ({
-                    ...movie,
-                    poster_path: rectifyImageLinks(movie.poster_path, "w300"),
-                    backdrop_path: rectifyImageLinks(
-                        movie.backdrop_path,
-                        "original"
-                    ),
-                })),
-                upcomingMovies: upcomingMovies.map((movie) => ({
-                    ...movie,
-                    poster_path: rectifyImageLinks(movie.poster_path, "w300"),
-                    backdrop_path: rectifyImageLinks(
-                        movie.backdrop_path,
-                        "original"
-                    ),
-                })),
-                topRatedMovies: topRatedMovies.map((movie) => ({
-                    ...movie,
-                    poster_path: rectifyImageLinks(movie.poster_path, "w300"),
-                    backdrop_path: rectifyImageLinks(
-                        movie.backdrop_path,
-                        "original"
-                    ),
-                })),
-            }));
-            setLoading(false);
+            try {
+                const { results: trendingMovies } = await getMoviesByEndPoint(
+                    endPoints.trendingMoviesByWeek,
+                    pageNum
+                );
+                const { results: upcomingMovies } = await getMoviesByEndPoint(
+                    endPoints.upcomingMovies,
+                    pageNum
+                );
+                const { results: topRatedMovies } = await getMoviesByEndPoint(
+                    endPoints.topRatedMovies,
+                    pageNum
+                );
+                const bannerMovie =
+                    trendingMovies[
+                        Math.floor(Math.random() * trendingMovies.length)
+                    ];
+                setMovies(() => ({
+                    bannerMovie: rectifyMovieData(bannerMovie),
+                    trendingMovies: rectifyMovieData(trendingMovies),
+                    upcomingMovies: rectifyMovieData(upcomingMovies),
+                    topRatedMovies: rectifyMovieData(topRatedMovies),
+                }));
+            } catch (error) {
+                console.log(error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
         })();
     }, [pageNum]);
-    return { movies, loading };
+    return { movies, loading, error };
 };
 
 export const useFetchByMovieID = (movieId) => {
