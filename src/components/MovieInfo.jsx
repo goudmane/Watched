@@ -10,9 +10,11 @@ const MovieInfo = ({ movie }) => {
                     ({new Date(movie.release_date).getFullYear()})
                 </span>
             </h2>
-            <div className="movie-genres">
-                {movie.genres.map((genre) => genre.name).join(" / ")}
-            </div>
+            {movie.genres && (
+                <div className="movie-genres">
+                    {movie.genres.map((genre) => genre.name).join(" / ")}
+                </div>
+            )}
             <div className="movie-stats">
                 <div className="movie-rating">
                     <FaStar className="rating-star" />

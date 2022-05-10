@@ -11,7 +11,8 @@ const MovieDisplay = ({ movie }) => {
                     <div className="box">
                         <div className="label">Director</div>
                         <div className="content">
-                            {movie.director.map((c) => c.name).join(", ")}
+                            {movie.director &&
+                                movie.director.map((c) => c.name).join(", ")}
                         </div>
                     </div>
                     <div className="box">
@@ -23,10 +24,11 @@ const MovieDisplay = ({ movie }) => {
                     <div className="box">
                         <div className="label">Cast</div>
                         <div className="content">
-                            {movie.cast
-                                .slice(0, 4)
-                                .map((c) => c.name)
-                                .join(", ")}
+                            {movie.cast &&
+                                movie.cast
+                                    .slice(0, 4)
+                                    .map((c) => c.name)
+                                    .join(", ")}
                         </div>
                     </div>
                     <hr />

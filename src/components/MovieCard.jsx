@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegBookmark } from "react-icons/fa";
-import { baseImgUrl } from "../API/moviesService";
 
 const MovieCard = ({ movie }) => {
     return (
         <div className="movie-card">
             <Link to={`movie/${movie.id}`}>
-                <img
-                    src={`${baseImgUrl}/w500/${movie.poster_path}`}
-                    alt={movie.original_title}
-                />
+                <img src={movie.poster_path} alt={movie.original_title} />
             </Link>
             <div className="movie-detail">
                 <div className="movie-title">
