@@ -22,7 +22,7 @@ const Home = () => {
 
     return (
         <>
-            <Banner />
+            <Banner page="home" />
             <div className="container">
                 <div className="movie-grid">
                     {trendingMovies &&

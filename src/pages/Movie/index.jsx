@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { FaGreaterThan, FaStar } from "react-icons/fa";
 import Banner from "../../components/Banner";
 import { useFetchByMovieID } from "../../hooks/moviesHooks";
 import { movie } from "../../utils/links";
@@ -14,7 +13,7 @@ const MovieDetail = () => {
     // if (loading) return <div>Loading...</div>;
     return (
         <>
-            <Banner />
+            <Banner page="detail" movie={movie} />
             <div className="container">
                 <div className="movie-details">
                     <MovieInfo movie={movie} />
