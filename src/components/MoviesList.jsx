@@ -1,10 +1,18 @@
-import React from 'react'
-import Movie from './Movie';
+import React from "react";
+import MovieCard from "./MovieCard";
 
-const MoviesList = ({movies}) => {
-  return (
-    <div className='row'>{movies.length>0 && movies.map((movie,idx)=>(<Movie movie={movie} key={idx}/>))}</div>
-  )
-}
+const MoviesList = ({ movies, label }) => {
+    return (
+        <>
+            <h2>{label}</h2>
+            <div className="movie-grid">
+                {movies &&
+                    movies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))}
+            </div>
+        </>
+    );
+};
 
-export default MoviesList
+export default MoviesList;
