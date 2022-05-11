@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+    const { pathname } = useLocation();
+    const noBannerPaths = ["/top-rated", "/trending", "/upcoming"];
+    const className = noBannerPaths.includes(pathname) ? "" : "transparent";
     return (
-        <header>
+        <header className={className}>
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
