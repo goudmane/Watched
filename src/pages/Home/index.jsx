@@ -1,11 +1,12 @@
 import React from "react";
 import Banner from "../../components/Banner";
 import Category from "../../components/Category";
+import Loader from "../../components/Loader";
 import { useFetchByMoviesAtHome } from "../../hooks/moviesHooks";
 
 const Home = () => {
     const { movies, loading, error } = useFetchByMoviesAtHome();
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Loader />;
     if (error) return <h2>{error}</h2>;
     return (
         <>
