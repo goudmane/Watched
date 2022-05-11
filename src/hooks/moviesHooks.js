@@ -40,9 +40,15 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
                     ];
                 setMovies(() => ({
                     bannerMovie: rectifyMovieData(bannerMovie),
-                    trendingMovies: rectifyMovieData(trendingMovies),
-                    upcomingMovies: rectifyMovieData(upcomingMovies),
-                    topRatedMovies: rectifyMovieData(topRatedMovies),
+                    trendingMovies: rectifyMovieData(
+                        trendingMovies.slice(1, 6)
+                    ),
+                    upcomingMovies: rectifyMovieData(
+                        upcomingMovies.slice(1, 6)
+                    ),
+                    topRatedMovies: rectifyMovieData(
+                        topRatedMovies.slice(1, 6)
+                    ),
                 }));
             } catch (error) {
                 console.log(error);
@@ -58,31 +64,45 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
 export const useFetchByMovieID = (movieId) => {
     const [movie, setMovie] = useState({});
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
     useEffect(() => {
         (async () => {
-            const movieData = await getMovieById(movieId);
-            const { crew, cast } = await getCreditsByMovieId(movieId);
-            const recommendedData = await getRecommendationsByMovieId(movieId);
-            const youtubeLink = await getVideoSourceByMovieId(movieId);
-            setMovie(() => ({
-                ...movieData,
-                poster_path: rectifyImageLinks(movieData.poster_path, "w300"),
-                backdrop_path: rectifyImageLinks(
-                    movieData.backdrop_path,
-                    "original"
-                ),
-                youtube_link: youtubeLink,
-                cast: cast.slice(0, 10).map((c) => ({
-                    ...c,
-                    profile_path: rectifyImageLinks(c.profile_path, "original"),
-                })),
-                director: getDirectorFromCrew(crew),
-                writers: getWritersFromCrew(crew),
-                recommended: recommendedData,
-            }));
-
-            setLoading(false);
+            try {
+                const movieData = await getMovieById(movieId);
+                const { crew, cast } = await getCreditsByMovieId(movieId);
+                const recommendedData = await getRecommendationsByMovieId(
+                    movieId
+                );
+                const youtubeLink = await getVideoSourceByMovieId(movieId);
+                setMovie(() => ({
+                    ...movieData,
+                    poster_path: rectifyImageLinks(
+                        movieData.poster_path,
+                        "w300"
+                    ),
+                    backdrop_path: rectifyImageLinks(
+                        movieData.backdrop_path,
+                        "original"
+                    ),
+                    youtube_link: youtubeLink,
+                    cast: cast.slice(0, 10).map((c) => ({
+                        ...c,
+                        profile_path: rectifyImageLinks(
+                            c.profile_path,
+                            "original"
+                        ),
+                    })),
+                    director: getDirectorFromCrew(crew),
+                    writers: getWritersFromCrew(crew),
+                    recommended: recommendedData,
+                }));
+            } catch (error) {
+                console.log(error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
         })();
     }, [movieId]);
-    return { movie, loading };
+    return { movie, loading, error };
 };
