@@ -85,7 +85,7 @@ export const useFetchByMovieID = (movieId) => {
                         "original"
                     ),
                     youtube_link: youtubeLink,
-                    cast: cast.slice(0, 10).map((c) => ({
+                    cast: cast.map((c) => ({
                         ...c,
                         profile_path: rectifyImageLinks(
                             c.profile_path,

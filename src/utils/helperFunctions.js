@@ -41,4 +41,5 @@ export const rectifyImageLinks = (data, width) => {
     } else if (typeof data === Object) {
         return data.map((d) => `${baseImgUrl}/${width}${d}`);
     }
+    return data;
 };
