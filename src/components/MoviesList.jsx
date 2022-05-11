@@ -1,10 +1,9 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-const MoviesList = ({ movies, label }) => {
+const MoviesList = ({ movies }) => {
     return (
         <>
-            <h2>{label}</h2>
             <div className="movie-grid">
                 {movies &&
                     movies.map((movie) => (

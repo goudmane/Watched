@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner";
-import MoviesList from "../../components/MoviesList";
+import Category from "../../components/Category";
 import { useFetchByMoviesAtHome } from "../../hooks/moviesHooks";
 
 const Home = () => {
@@ -11,17 +11,20 @@ const Home = () => {
         <>
             <Banner page="home" movie={movies.bannerMovie} />
             <div className="container">
-                <MoviesList
+                <Category
                     movies={movies.trendingMovies}
                     label="Trending Movies"
+                    to="/trending"
                 />
-                <MoviesList
+                <Category
                     movies={movies.upcomingMovies}
                     label="Upcoming Movies"
+                    to="/upcoming"
                 />
-                <MoviesList
+                <Category
                     movies={movies.topRatedMovies}
                     label="Top Rated Movies"
+                    to="/top-rated"
                 />
             </div>
         </>
