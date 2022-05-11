@@ -6,11 +6,12 @@ import MovieInfo from "../../components/MovieInfo";
 import MovieDisplay from "../../components/MovieDisplay";
 import Divider from "../../components/Divider";
 import Helmet from "react-helmet";
+import Loader from "../../components/Loader";
 
 const MovieDetail = () => {
     const { movieId } = useParams();
     const { movie, loading } = useFetchByMovieID(movieId);
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loader />;
     return (
         <>
             <Helmet>
