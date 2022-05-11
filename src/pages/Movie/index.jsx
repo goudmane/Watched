@@ -5,6 +5,7 @@ import { useFetchByMovieID } from "../../hooks/moviesHooks";
 import MovieInfo from "../../components/MovieInfo";
 import MovieDisplay from "../../components/MovieDisplay";
 import Divider from "../../components/Divider";
+import Helmet from "react-helmet";
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -12,6 +13,12 @@ const MovieDetail = () => {
     if (loading) return <div>Loading...</div>;
     return (
         <>
+            <Helmet>
+                <title>
+                    {movie.title} (
+                    {String(new Date(movie.release_date).getFullYear())})
+                </title>
+            </Helmet>
             <Banner page="detail" movie={movie} />
             <div className="container">
                 <div className="movie-details">

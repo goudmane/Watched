@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import Banner from "../../components/Banner";
 import Category from "../../components/Category";
 import Loader from "../../components/Loader";
@@ -10,6 +11,9 @@ const Home = () => {
     if (error) return <h2>{error}</h2>;
     return (
         <>
+            <Helmet>
+                <title>Movify - Surf through movies</title>
+            </Helmet>
             <Banner page="home" movie={movies.bannerMovie} />
             <div className="container">
                 <Category
