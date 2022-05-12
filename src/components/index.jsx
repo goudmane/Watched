@@ -1,8 +1,9 @@
 export { default as Banner } from "./Banner";
 export { default as Divider } from "./Divider";
 export { default as Loader } from "./Loader";
+export { default as Header } from "./Header";
 export { default as Category } from "./Category";
-export { default as Moviecard } from "./MovieCard";
+export { default as MovieCard } from "./MovieCard";
 export { default as MoviesList } from "./MoviesList";
 export { default as MovieDisplay } from "./MovieDisplay";
 export { default as MovieInfo } from "./MovieInfo";
