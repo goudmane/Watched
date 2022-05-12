@@ -419,15 +419,19 @@ header .nav-links li:last-child {
 
 .cast-grid {
     padding: 1rem 0.3rem;
-    cursor: pointer;
     display: flex;
+    align-items: center;
     gap: 1rem;
     overflow-x: scroll;
     overflow-y: hidden;
 }
-.cast-grid .cast {
+.cast-grid .see-more {
     width: 11rem;
-    max-height: 18rem;
+}
+.cast-grid .cast {
+    cursor: pointer;
+    width: 11rem;
+    min-height: 18rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
