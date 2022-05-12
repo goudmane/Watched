@@ -7,11 +7,14 @@ import MovieDisplay from "../../components/MovieDisplay";
 import Divider from "../../components/Divider";
 import Helmet from "react-helmet";
 import Loader from "../../components/Loader";
+import Cast from "../../components/Cast";
 
 const MovieDetail = () => {
     const { movieId } = useParams();
-    const { movie, loading } = useFetchByMovieID(movieId);
+    const { movie, loading, error } = useFetchByMovieID(movieId);
     if (loading) return <Loader />;
+    if (error) return <h2>{error}</h2>;
+    console.log(movie);
     return (
         <>
             <Helmet>
@@ -26,6 +29,12 @@ const MovieDetail = () => {
                     <MovieInfo movie={movie} />
                     <Divider />
                     <MovieDisplay movie={movie} />
+                    <Divider />
+                    <div className="cast-grid">
+                        {movie.cast.map((cast, idx) => (
+                            <Cast cast={cast} key={idx} />
+                        ))}
+                    </div>
                     <Divider />
                 </div>
             </div>
