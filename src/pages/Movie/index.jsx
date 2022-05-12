@@ -1,13 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Banner from "../../components/Banner";
 import { useFetchByMovieID } from "../../hooks/moviesHooks";
-import MovieInfo from "../../components/MovieInfo";
-import MovieDisplay from "../../components/MovieDisplay";
-import Divider from "../../components/Divider";
 import Helmet from "react-helmet";
-import Loader from "../../components/Loader";
-import Cast from "../../components/Cast";
+import {
+    Banner,
+    Divider,
+    Loader,
+    MovieInfo,
+    MovieDisplay,
+    MovieCast,
+} from "../../components";
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -30,11 +32,7 @@ const MovieDetail = () => {
                     <Divider />
                     <MovieDisplay movie={movie} />
                     <Divider />
-                    <div className="cast-grid">
-                        {movie.cast.map((cast, idx) => (
-                            <Cast cast={cast} key={idx} />
-                        ))}
-                    </div>
+                    <MovieCast cast={movie.cast.slice(0, 10)} />
                     <Divider />
                 </div>
             </div>
