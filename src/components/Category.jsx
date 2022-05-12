@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import MoviesList from "./MoviesList";
+import { MoviesList } from ".";
 
 const Category = ({ movies, label, to }) => {
     const navigate = useNavigate();

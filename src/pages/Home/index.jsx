@@ -1,8 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import Banner from "../../components/Banner";
-import Category from "../../components/Category";
-import Loader from "../../components/Loader";
+import { Loader, Banner, Category } from "../../components";
 import { useFetchByMoviesAtHome } from "../../hooks/moviesHooks";
 
 const Home = () => {

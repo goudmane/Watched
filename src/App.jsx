@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import { Header } from "./components";
 import {
     Home,
     TrendingMovies,
@@ -11,7 +11,7 @@ import {
 function App() {
     return (
         <>
-            <Header />
+            <Header/>
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/top-rated" element={<TopRated />} />
