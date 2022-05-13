@@ -22,18 +22,15 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
     useEffect(() => {
         (async () => {
             try {
-                const { results: trendingMovies } = await getMoviesByEndPoint(
-                    endPoints.trendingMoviesByWeek,
-                    pageNum
-                );
-                const { results: upcomingMovies } = await getMoviesByEndPoint(
-                    endPoints.upcomingMovies,
-                    pageNum
-                );
-                const { results: topRatedMovies } = await getMoviesByEndPoint(
-                    endPoints.topRatedMovies,
-                    pageNum
-                );
+                const [
+                    { results: trendingMovies },
+                    { results: upcomingMovies },
+                    { results: topRatedMovies },
+                ] = await Promise.all([
+                    getMoviesByEndPoint(endPoints.trendingMovies, pageNum),
+                    getMoviesByEndPoint(endPoints.upcomingMovies, pageNum),
+                    getMoviesByEndPoint(endPoints.topRatedMovies, pageNum),
+                ]);
                 const bannerMovie =
                     trendingMovies[
                         Math.floor(Math.random() * trendingMovies.length)
@@ -68,12 +65,18 @@ export const useFetchByMovieID = (movieId) => {
     useEffect(() => {
         (async () => {
             try {
-                const movieData = await getMovieById(movieId);
-                const { crew, cast } = await getCreditsByMovieId(movieId);
-                const recommendedData = await getRecommendationsByMovieId(
-                    movieId
-                );
-                const youtubeLink = await getVideoSourceByMovieId(movieId);
+                const [
+                    movieData,
+                    { crew, cast },
+                    recommendedData,
+                    youtubeLink,
+                ] = await Promise.all([
+                    getMovieById(movieId),
+                    getCreditsByMovieId(movieId),
+                    getRecommendationsByMovieId(movieId),
+                    getVideoSourceByMovieId(movieId),
+                ]);
+
                 setMovie(() => ({
                     ...movieData,
                     poster_path: rectifyImageLinks(
