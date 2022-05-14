@@ -5,7 +5,7 @@ import { FaRegBookmark } from "react-icons/fa";
 const MovieCard = ({ movie }) => {
     return (
         <div className="movie-card">
-            <Link to={`movie/${movie.id}`}>
+            <Link to={`/movie/${movie.id}`}>
                 <img src={movie.poster_path} alt={movie.original_title} />
             </Link>
             <div className="movie-detail">
