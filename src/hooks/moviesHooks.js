@@ -97,7 +97,7 @@ export const useFetchByMovieID = (movieId) => {
                     })),
                     director: getDirectorFromCrew(crew),
                     writers: getWritersFromCrew(crew),
-                    recommended: recommendedData,
+                    recommended: rectifyMovieData(recommendedData),
                 }));
             } catch (error) {
                 console.log(error);
