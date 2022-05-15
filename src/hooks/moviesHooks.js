@@ -109,3 +109,27 @@ export const useFetchByMovieID = (movieId) => {
     }, [movieId]);
     return { movie, loading, error };
 };
+
+export const useFecthAtCategoryPage = (endPoint, pageNum = 1) => {
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const { results } = await getMoviesByEndPoint(
+                    endPoint,
+                    pageNum
+                );
+                setMovies(rectifyMovieData(results));
+            } catch (error) {
+                console.log(error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        })();
+    }, [endPoint, pageNum]);
+    return { movies, loading, error };
+};
