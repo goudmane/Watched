@@ -17,7 +17,7 @@ const TrendingMovies = () => {
             </Helmet>
             <section>
                 <div className="container">
-                    <h1>Trending Movies</h1>
+                    <h1 className="title-label">Trending Movies</h1>
                     <div>
                         <MoviesList movies={movies} />
                     </div>
