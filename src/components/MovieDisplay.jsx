@@ -15,12 +15,14 @@ const MovieDisplay = ({ movie }) => {
                                 movie.director.map((c) => c.name).join(", ")}
                         </div>
                     </div>
-                    <div className="box">
-                        <div className="label">Writers</div>
-                        <div className="content">
-                            {movie.writers.map((c) => c.name).join(", ")}
+                    {movie.writers.length !== 0 && (
+                        <div className="box">
+                            <div className="label">Writers</div>
+                            <div className="content">
+                                {movie.writers.map((c) => c.name).join(", ")}
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="box">
                         <div className="label">Cast</div>
                         <div className="content">
@@ -38,16 +40,18 @@ const MovieDisplay = ({ movie }) => {
                     </div>
                 </div>
             </div>
-            <div className="movie-trailer">
-                <iframe
-                    width="100%"
-                    height="100%"
-                    src={movie.youtube_link}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen></iframe>
-            </div>
+            {movie.youtube_link && (
+                <div className="movie-trailer">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src={movie.youtube_link}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>
+                </div>
+            )}
         </div>
     );
 };

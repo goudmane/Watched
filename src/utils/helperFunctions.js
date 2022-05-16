@@ -1,11 +1,11 @@
 import { baseImgUrl } from "../API/moviesService";
 
 export const createLinkFromData = (data) => {
-    const key = data.results.filter(
+    const key = data.filter(
         (video) =>
             video.type === "Trailer" && video.site === "YouTube" && video.key
     )[0].key;
-    const link = `https://www.youtube.com/embed/${key}`;
+    const link = `https://www.youtube-nocookie.com/embed/${key}/`;
 
     return link;
 };

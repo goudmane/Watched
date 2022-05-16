@@ -45,7 +45,8 @@ export const getRecommendationsByMovieId = async (movieId) => {
 export const getVideoSourceByMovieId = async (movieId) => {
     const response = await API.get(`movie/${movieId}/videos`);
     const data = await response.data;
-    const link = createLinkFromData(data);
+    const link =
+        data.results.length !== 0 ? createLinkFromData(data.results) : "";
     return link;
 };
 export const baseImgUrl = `https://image.tmdb.org/t/p`;

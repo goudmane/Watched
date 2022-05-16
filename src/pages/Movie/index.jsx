@@ -17,7 +17,6 @@ const MovieDetail = () => {
     const { movie, loading, error } = useFetchByMovieID(movieId);
     if (loading) return <Loader />;
     if (error) return <h2>{error}</h2>;
-    console.log(movie);
     return (
         <>
             <Helmet>
@@ -35,11 +34,15 @@ const MovieDetail = () => {
                     <Divider />
                     <MovieCast cast={movie.cast.slice(0, 10)} />
                     <Divider />
-                    <h2 className="title-label">Recommended Movies:</h2>
-                    <MoviesList
-                        movies={movie.recommended}
-                        orientation="horizontal"
-                    />
+                    {movie.recommended && (
+                        <>
+                            <h2 className="title-label">Recommended Movies:</h2>
+                            <MoviesList
+                                movies={movie.recommended}
+                                orientation="horizontal"
+                            />
+                        </>
+                    )}
                 </div>
             </div>
         </>
