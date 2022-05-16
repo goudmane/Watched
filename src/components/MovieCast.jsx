@@ -4,7 +4,7 @@ import { Cast } from ".";
 const MovieCast = ({ cast }) => {
     return (
         <>
-            <h2 className="cast-label">Cast:</h2>
+            <h2 className="title-label">Cast:</h2>
             <div className="cast-grid">
                 {cast.map((cast, idx) => (
                     <Cast cast={cast} key={idx} />
