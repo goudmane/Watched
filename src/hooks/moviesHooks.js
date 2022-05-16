@@ -64,6 +64,7 @@ export const useFetchByMovieID = (movieId) => {
     const [error, setError] = useState("");
     useEffect(() => {
         (async () => {
+            setLoading(true);
             try {
                 const [
                     movieData,
