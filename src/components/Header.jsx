@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
     const { pathname } = useLocation();
     const noBannerPaths = ["/top-rated", "/trending", "/upcoming"];
     const className = noBannerPaths.includes(pathname) ? "" : "transparent";
+    const activateClass = ({ isActive }) => (isActive ? "active" : "");
     return (
         <header className={className}>
             <div className="container">
@@ -14,16 +15,24 @@ const Header = () => {
                     </div>
                     <ul className="nav-links">
                         <li>
-                            <Link to="/">Home</Link>
+                            <NavLink className={activateClass} to="/">
+                                Home
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/top-rated">Top Rated</Link>
+                            <NavLink className={activateClass} to="/top-rated">
+                                Top Rated
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/upcoming">Upcoming</Link>
+                            <NavLink className={activateClass} to="/upcoming">
+                                Upcoming
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/trending">Trending</Link>
+                            <NavLink className={activateClass} to="/trending">
+                                Trending
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
