@@ -217,7 +217,7 @@ header .nav-links li:last-child {
 }
 
 /* Category at home */
-.category-home .label {
+/* .category-home .label {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -225,14 +225,7 @@ header .nav-links li:last-child {
 }
 .category-home .label h2 {
     margin: 0;
-}
-.category-home .label .see-more {
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: #6c757d;
-    display: flex;
-    align-items: center;
-}
+} */
 
 /* Movie Card */
 .movie-grid {
@@ -364,6 +357,7 @@ header .nav-links li:last-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem 0;
 }
 .movie-poster {
     width: 600px;
@@ -434,17 +428,35 @@ header .nav-links li:last-child {
         width: 100%;
     }
 }
-
+.title-label {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.7rem;
+    margin: 0;
+    font-weight: normal;
+    padding-bottom: 0.4rem;
+    border-bottom: solid 1px #ccc;
+}
+.title-label h2 {
+    margin: 1rem 0 0 0;
+}
+.title-label .see-more {
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.1rem;
+}
+.movie-cast {
+    margin-bottom: 1rem;
+}
 .cast-grid {
     padding: 1rem 0.3rem;
     display: flex;
     gap: 1rem;
     overflow-x: scroll;
     overflow-y: hidden;
-}
-.title-label {
-    margin: 0;
-    font-weight: normal;
 }
 .cast-grid .see-more {
     width: 11rem;

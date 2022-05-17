@@ -4,7 +4,6 @@ import { useFetchByMovieID } from "../../hooks/moviesHooks";
 import Helmet from "react-helmet";
 import {
     Banner,
-    Divider,
     Loader,
     MovieInfo,
     MovieDisplay,
@@ -29,11 +28,8 @@ const MovieDetail = () => {
             <div className="container">
                 <div className="movie-details">
                     <MovieInfo movie={movie} />
-                    <Divider />
                     <MovieDisplay movie={movie} />
-                    <Divider />
                     <MovieCast cast={movie.cast.slice(0, 10)} />
-                    <Divider />
                     {movie.recommended && (
                         <>
                             <h2 className="title-label">Recommended Movies:</h2>

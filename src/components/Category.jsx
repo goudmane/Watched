@@ -10,7 +10,7 @@ const Category = ({ movies, label, to }) => {
     };
     return (
         <div className="category-home">
-            <div className="label">
+            <div className="title-label">
                 <h2>{label}</h2>
                 <span onClick={handleNavigate} className="see-more">
                     <IoIosArrowDropright />

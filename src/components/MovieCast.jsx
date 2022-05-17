@@ -3,7 +3,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { Cast } from ".";
 const MovieCast = ({ cast }) => {
     return (
-        <>
+        <div className="movie-cast">
             <h2 className="title-label">Cast:</h2>
             <div className="cast-grid">
                 {cast.map((cast, idx) => (
@@ -13,7 +13,7 @@ const MovieCast = ({ cast }) => {
                     Click to see more <IoIosArrowDropright />
                 </h3>
             </div>
-        </>
+        </div>
     );
 };
 
