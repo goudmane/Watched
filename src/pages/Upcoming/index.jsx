@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Loader, MoviesList, Error } from "../../components";
+import { Loader, MoviesList } from "../../components";
 import { useFecthAtCategoryPage } from "../../hooks/moviesHooks";
 import { endPoints } from "../../utils/endpoints";
 
@@ -9,7 +9,7 @@ const TopRated = () => {
         endPoints.upcomingMovies
     );
     if (loading) return <Loader />;
-    if (error) return <Error />;
+    if (error) return <h2>{error}</h2>;
     return (
         <>
             <Helmet>
