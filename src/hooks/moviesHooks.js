@@ -38,13 +38,13 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
                 setMovies(() => ({
                     bannerMovie: rectifyMovieData(bannerMovie),
                     trendingMovies: rectifyMovieData(
-                        trendingMovies.slice(1, 6)
+                        trendingMovies.slice(1, 11)
                     ),
                     upcomingMovies: rectifyMovieData(
-                        upcomingMovies.slice(1, 6)
+                        upcomingMovies.slice(1, 11)
                     ),
                     topRatedMovies: rectifyMovieData(
-                        topRatedMovies.slice(1, 6)
+                        topRatedMovies.slice(1, 11)
                     ),
                 }));
             } catch (error) {
