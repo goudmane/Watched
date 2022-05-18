@@ -38,18 +38,18 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
                 setMovies(() => ({
                     bannerMovie: rectifyMovieData(bannerMovie),
                     trendingMovies: rectifyMovieData(
-                        trendingMovies.slice(1, 11)
+                        trendingMovies.slice(0, 10)
                     ),
                     upcomingMovies: rectifyMovieData(
-                        upcomingMovies.slice(1, 11)
+                        upcomingMovies.slice(0, 10)
                     ),
                     topRatedMovies: rectifyMovieData(
-                        topRatedMovies.slice(1, 11)
+                        topRatedMovies.slice(0, 10)
                     ),
                 }));
             } catch (error) {
-                console.log(error);
-                setError(error.message);
+                console.log(error.response);
+                setError(error.response);
             } finally {
                 setLoading(false);
             }
@@ -101,8 +101,8 @@ export const useFetchByMovieID = (movieId) => {
                     recommended: rectifyMovieData(recommendedData),
                 }));
             } catch (error) {
-                console.log(error);
-                setError(error.message);
+                console.log(error.response);
+                setError(error.response);
             } finally {
                 setLoading(false);
             }
@@ -125,8 +125,8 @@ export const useFecthAtCategoryPage = (endPoint, pageNum = 1) => {
                 );
                 setMovies(rectifyMovieData(results));
             } catch (error) {
-                console.log(error);
-                setError(error.message);
+                console.log(error.response);
+                setError(error.response);
             } finally {
                 setLoading(false);
             }
