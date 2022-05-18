@@ -9,13 +9,14 @@ import {
     MovieDisplay,
     MovieCast,
     MoviesList,
+    Error,
 } from "../../components";
 
 const MovieDetail = () => {
     const { movieId } = useParams();
     const { movie, loading, error } = useFetchByMovieID(movieId);
     if (loading) return <Loader />;
-    if (error) return <h2>{error}</h2>;
+    if (error) return <Error error={error} />;
     return (
         <>
             <Helmet>

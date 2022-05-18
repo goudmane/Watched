@@ -1,12 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Loader, Banner, Category } from "../../components";
+import { Loader, Banner, Category, Error } from "../../components";
 import { useFetchByMoviesAtHome } from "../../hooks/moviesHooks";
 
 const Home = () => {
     const { movies, loading, error } = useFetchByMoviesAtHome();
     if (loading) return <Loader />;
-    if (error) return <h2>{error}</h2>;
+    if (error) return <Error error={error} />;
     return (
         <>
             <Helmet>
