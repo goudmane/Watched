@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { Loader, Banner, Category, Error } from "../../components";
 import { useFetchByMoviesAtHome } from "../../hooks/moviesHooks";
 
@@ -9,9 +8,6 @@ const Home = () => {
     if (error) return <Error error={error} />;
     return (
         <>
-            <Helmet>
-                <title>Movify - Surf through movies</title>
-            </Helmet>
             <Banner page="home" movie={movies.bannerMovie} />
             <div className="container">
                 <Category
