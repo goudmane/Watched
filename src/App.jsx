@@ -6,6 +6,7 @@ import {
     TopRated,
     UpcomingMovies,
     MovieDetail,
+    People,
 } from "./pages";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/trending" element={<TrendingMovies />} />
                 <Route path="/upcoming" element={<UpcomingMovies />} />
                 <Route path="/movie/:movieId" element={<MovieDetail />} />
+                <Route path="/people/:peopleId" element={<People />} />
             </Routes>
         </>
     );
