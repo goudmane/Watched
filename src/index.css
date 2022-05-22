@@ -527,6 +527,88 @@ header .nav-links li:last-child {
     margin-bottom: 25px;
 }
 
+/* People Page */
+.people-page {
+    display: flex;
+    gap: 1.4rem;
+}
+.people-page .left {
+    flex: 0 0 280px;
+    width: 280px;
+}
+.people-page .left .profile-img {
+    width: 100%;
+    margin-bottom: 1.1rem;
+    position: relative;
+}
+.profile-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.375rem;
+    box-shadow: 0 3px 3px -2px #0003, 0 3px 4px #00000024, 0 1px 8px #0000001f;
+}
+.people-page .left .person-details .header {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.1rem;
+}
+.person-details .info-box {
+    margin-bottom: 1rem;
+}
+.person-details .info-box .label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+.people-page .right {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.people-page .right h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    margin-top: 0.8rem;
+    margin-bottom: 1.3rem;
+}
+.people-page .right .biography {
+    margin-bottom: 2.5rem;
+}
+.right .biography .label {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.biography .value {
+    line-height: 1.4rem;
+}
+.biography .value .toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: #032541;
+    text-transform: lowercase;
+    cursor: pointer;
+    text-decoration: underline;
+}
+@media only screen and (max-width: 768px) {
+    .people-page {
+        display: block;
+    }
+    .people-page .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 1.3rem;
+    }
+    .people-page .left .profile-img {
+        width: 200px;
+        flex: 0 0 200px;
+    }
+    .people-page .left .person-details {
+        flex: 1 1 auto;
+    }
+}
+
 /* Add Page */
 .add-content {
     padding: 50px 0;
