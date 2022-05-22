@@ -18,12 +18,18 @@ export const useFecthRequestPeople = (personId) => {
                 setPerson(() => ({
                     ...detail,
                     profile_path: rectifyImageLinks(detail.profile_path),
-                    cast: rectifyMovieData(cast),
+                    cast: rectifyMovieData(cast).sort(
+                        (a, b) =>
+                            new Date(b.release_date).getFullYear() -
+                            new Date(a.release_date).getFullYear()
+                    ),
                     crew: rectifyMovieData(crew),
                 }));
             } catch (error) {
-                console.log(error);
-                setError(error.response);
+                console.log(error.response || error.message);
+                setError(
+                    error.response || { status: 500, message: error.message }
+                );
             } finally {
                 setLoading(false);
             }
