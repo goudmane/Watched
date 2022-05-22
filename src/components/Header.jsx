@@ -3,8 +3,12 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
     const { pathname } = useLocation();
-    const noBannerPaths = ["/top-rated", "/trending", "/upcoming"];
-    const className = noBannerPaths.includes(pathname) ? "" : "transparent";
+    const peoplePathRegex = /\/people\/[0-9]+/;
+    const noBannerPaths = ["/top-rated", "/trending", "/upcoming", "/people"];
+    const className =
+        noBannerPaths.includes(pathname) || pathname.match(peoplePathRegex)
+            ? ""
+            : "transparent";
     const activateClass = ({ isActive }) => (isActive ? "active" : "");
     return (
         <header className={className}>
