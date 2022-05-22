@@ -48,8 +48,10 @@ export const useFetchByMoviesAtHome = (pageNum = 1) => {
                     ),
                 }));
             } catch (error) {
-                console.log(error.response);
-                setError(error.response);
+                console.log(error.response || error.message);
+                setError(
+                    error.response || { status: 500, message: error.message }
+                );
             } finally {
                 setLoading(false);
             }
@@ -101,8 +103,10 @@ export const useFetchByMovieID = (movieId) => {
                     recommended: rectifyMovieData(recommendedData),
                 }));
             } catch (error) {
-                console.log(error.response);
-                setError(error.response);
+                console.log(error.response || error.message);
+                setError(
+                    error.response || { status: 500, message: error.message }
+                );
             } finally {
                 setLoading(false);
             }
@@ -125,8 +129,10 @@ export const useFecthAtCategoryPage = (endPoint, pageNum = 1) => {
                 );
                 setMovies(rectifyMovieData(results));
             } catch (error) {
-                console.log(error.response);
-                setError(error.response);
+                console.log(error.response || error.message);
+                setError(
+                    error.response || { status: 500, message: error.message }
+                );
             } finally {
                 setLoading(false);
             }
