@@ -35,7 +35,7 @@ export const rectifyMovieData = (data) => {
     };
 };
 
-export const rectifyImageLinks = (data, width) => {
+export const rectifyImageLinks = (data, width = "original") => {
     if (typeof data === "string") {
         return `${baseImgUrl}/${width}${data}`;
     } else if (typeof data === Object) {
