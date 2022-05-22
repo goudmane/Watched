@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Helmet from "react-helmet";
 import { useParams } from "react-router-dom";
-import { Error, Loader } from "../../components";
+import DefaultImage from "../../assets/images/placeholder-image.png";
+import { Error, Loader, MovieCard } from "../../components";
 import { useFecthRequestPeople } from "../../hooks/peopleHook";
-// import { person } from "../../utils/data";
 
 // eslint-disable-next-line no-sparse-arrays
 const gender = [, "Female", "Male"];
@@ -14,13 +14,14 @@ const People = () => {
     const { person, loading, error } = useFecthRequestPeople(personId);
     if (loading) return <Loader />;
     if (error) return <Error error={error} />;
-    console.log(isLess);
     const handleText = () => {
         setIsLess((prev) => !prev);
     };
-    const biography = isLess
-        ? person.biography.slice(0, 550) + "..."
-        : person.biography;
+    const biography =
+        isLess && person.biography.length >= 550
+            ? person.biography.slice(0, 550) + "..."
+            : person.biography;
+    console.log(person);
     return (
         <>
             <Helmet>
@@ -32,7 +33,7 @@ const People = () => {
                         <div className="left">
                             <div className="profile-img">
                                 <img
-                                    src={person.profile_path}
+                                    src={person.profile_path || DefaultImage}
                                     alt={person.name}
                                     draggable="false"
                                 />
@@ -67,31 +68,49 @@ const People = () => {
                                         </div>
                                     </div>
                                 )}
-                                <div className="info-box">
-                                    <div className="label">Place of Birth:</div>
-                                    <div className="value">
-                                        {person.place_of_birth}
+                                {person.place_of_birth && (
+                                    <div className="info-box">
+                                        <div className="label">
+                                            Place of Birth:
+                                        </div>
+                                        <div className="value">
+                                            {person.place_of_birth}
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         </div>
                         <div className="right">
                             <h1>{person.name}</h1>
-                            <div className="biography">
-                                <div className="label">Biography:</div>
-                                <p className="value">
-                                    <span>{biography}</span>
-                                    {person.biography.length >= 550 && (
-                                        <button
-                                            onClick={handleText}
-                                            className="toggle-btn">
-                                            {isLess ? "More" : "Less"}
-                                        </button>
-                                    )}
-                                </p>
-                            </div>
+                            {biography.length > 0 && (
+                                <div className="biography">
+                                    <div className="label">Biography:</div>
+                                    <p className="value">
+                                        <span>{biography}</span>
+                                        {person.biography.length >= 550 && (
+                                            <button
+                                                onClick={handleText}
+                                                className="toggle-btn">
+                                                {isLess ? "More" : "Less"}
+                                            </button>
+                                        )}
+                                    </p>
+                                </div>
+                            )}
                             <div className="known-for">
                                 <div className="label">Known For:</div>
+                                <div className="person-movies">
+                                    <div className="person-cast-grid">
+                                        {person.cast
+                                            .slice(0, 4)
+                                            .map((movie) => (
+                                                <MovieCard
+                                                    key={movie.id}
+                                                    movie={movie}
+                                                />
+                                            ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
