@@ -42,6 +42,7 @@ export const getRecommendationsByMovieId = async (movieId) => {
     const data = await response.data;
     return data ? data.results.slice(0, 8) : [];
 };
+
 export const getVideoSourceByMovieId = async (movieId) => {
     const response = await API.get(`movie/${movieId}/videos`);
     const data = await response.data;
@@ -49,4 +50,17 @@ export const getVideoSourceByMovieId = async (movieId) => {
         data.results.length !== 0 ? createLinkFromData(data.results) : "";
     return link;
 };
+
+export const getPersonDetail = async (personId) => {
+    const response = await API.get(`person/${personId}`);
+    const data = await response.data;
+    return data;
+};
+
+export const getPersonMovieCredit = async (personId) => {
+    const response = await API.get(`person/${personId}/movie_credits`);
+    const data = await response.data;
+    return data;
+};
+
 export const baseImgUrl = `https://image.tmdb.org/t/p`;
