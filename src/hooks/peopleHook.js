@@ -23,7 +23,11 @@ export const useFecthRequestPeople = (personId) => {
                             new Date(b.release_date).getFullYear() -
                             new Date(a.release_date).getFullYear()
                     ),
-                    crew: rectifyMovieData(crew),
+                    crew: rectifyMovieData(crew).sort(
+                        (a, b) =>
+                            new Date(b.release_date).getFullYear() -
+                            new Date(a.release_date).getFullYear()
+                    ),
                 }));
             } catch (error) {
                 console.log(error.response || error.message);

@@ -572,10 +572,12 @@ header .nav-links li:last-child {
     margin-top: 0.8rem;
     margin-bottom: 1.3rem;
 }
-.people-page .right .biography {
+.people-page .right .biography,
+.known-for {
     margin-bottom: 2.5rem;
 }
-.right .biography .label {
+.right .biography .label,
+.credits-container .label {
     font-weight: 500;
     font-size: 1.2rem;
 }
@@ -593,6 +595,7 @@ header .nav-links li:last-child {
 .known-for .label {
     font-weight: 500;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 .known-for .person-cast-grid {
     display: grid;
