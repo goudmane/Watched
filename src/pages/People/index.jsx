@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Helmet from "react-helmet";
 import { useParams } from "react-router-dom";
 import DefaultImage from "../../assets/images/placeholder-image.png";
-import { Error, Loader, MovieCard } from "../../components";
+import { CreditAccordion, Error, Loader, MovieCard } from "../../components";
 import { useFecthRequestPeople } from "../../hooks/peopleHook";
 
 // eslint-disable-next-line no-sparse-arrays
@@ -101,7 +101,7 @@ const People = () => {
                                 <div className="label">Known For:</div>
                                 <div className="person-movies">
                                     <div className="person-cast-grid">
-                                        {person.cast
+                                        {person.credits.cast
                                             .slice(0, 4)
                                             .map((movie) => (
                                                 <MovieCard
@@ -110,6 +110,12 @@ const People = () => {
                                                 />
                                             ))}
                                     </div>
+                                </div>
+                            </div>
+                            <div className="credits-container">
+                                <div className="label">Filmography:</div>
+                                <div className="value">
+                                    <CreditAccordion data={person.credits} />
                                 </div>
                             </div>
                         </div>
