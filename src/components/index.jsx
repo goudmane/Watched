@@ -2,6 +2,8 @@ export { default as Banner } from "./Banner";
 export { default as ScrollToTop } from "./ScrollToTop";
 export { default as Divider } from "./Divider";
 export { default as Loader } from "./Loader";
+export { default as Accordion } from "./Accordion";
+export { default as CreditAccordion } from "./CreditAccordion";
 export { default as Header } from "./Header";
 export { default as Error } from "./Error";
 export { default as Category } from "./Category";
