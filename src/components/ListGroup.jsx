@@ -4,7 +4,7 @@ import { ListItem } from ".";
 const ListGroup = ({ data }) => {
     return (
         <div className="list-group">
-            {data.map((movie, idx) => (
+            {data.slice(0, 14).map((movie, idx) => (
                 <ListItem movie={movie} key={idx} />
             ))}
         </div>
