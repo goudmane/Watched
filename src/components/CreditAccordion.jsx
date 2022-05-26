@@ -1,19 +1,16 @@
 import React from "react";
-import { Accordion } from ".";
+import { Accordion, ListGroup } from ".";
 const CreditAccordion = ({ data }) => {
     console.log(data);
     return (
         <ul className="accordion-list">
             {Object.keys(data).map((title, idx) => (
-                <li className="accordion-list-item">
+                <li className="accordion-list-item" key={+idx}>
                     <Accordion
                         title={title}
                         length={data[title].length}
-                        key={+idx}>
-                        {data[title].map((item, key) => (
-                            <div key={key}>{item.title}</div>
-                        ))}
-                    </Accordion>
+                        children={<ListGroup data={data[title]} />}
+                    />
                 </li>
             ))}
         </ul>

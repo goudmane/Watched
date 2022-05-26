@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiUpArrow } from "react-icons/bi";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Accordion = ({ title, length, children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +9,10 @@ const Accordion = ({ title, length, children }) => {
                 className="accordion-line"
                 onClick={() => setIsOpen((prev) => !prev)}>
                 <h3 className="title">
-                    {title} ({length} credits)
+                    {title} <span>({length} credits)</span>
                 </h3>
                 <span className="icon">
-                    <BiUpArrow />
+                    <MdKeyboardArrowDown height={"1rem"} />
                 </span>
             </div>
             <div className="accordion-inner">
