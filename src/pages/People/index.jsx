@@ -61,10 +61,10 @@ const People = () => {
                                 {person.deathday && (
                                     <div className="info-box">
                                         <div className="label">
-                                            Place of Birth:
+                                            Date of Death:
                                         </div>
                                         <div className="value">
-                                            {person.place_of_birth}
+                                            {person.deathday}
                                         </div>
                                     </div>
                                 )}
